@@ -380,3 +380,9 @@ typings/
 
 # DynamoDB Local files
 .dynamodb/
+.idea/.gitignore
+.idea/inspectionProfiles/
+.idea/metaprogramming.iml
+.idea/misc.xml
+.idea/modules.xml
+.idea/vcs.xml
