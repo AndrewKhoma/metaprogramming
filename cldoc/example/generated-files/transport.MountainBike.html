@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>MountainBike</title>
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" type="text/css" href="styles/cldoc.css">
+</head>
+
+<body id="cldoc">
+    <div id="cldoc_sidebar">
+        <div id="cldoc_sidebar_items">
+            <div class="back">
+                <div class="name"><span><span class="keyword">Class</span><span>transport::MountainBike</span></span></div><a href="transport.html"><span class="arrow">↵</span> <span>transport</span></a>
+            </div>
+            <div id="cldoc_sidebar_pagenav"></div>
+            <div class="subtitle">Member Functions</div>
+            <ul>
+                <li><a href="#transport.MountainBike.ChangeBreak">ChangeBreak&lt;BreakType&gt;<span class="counter"></span></a>
+                    <div class="brief">
+                        <p> Change the break type.</p>
+                    </div>
+                </li>
+                <li><a href="#transport.MountainBike.SetSuspension">SetSuspension<span class="counter"></span></a>
+                    <div class="brief">
+                        <p> Set suspension stiffness.</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div id="cldoc_content">
+        <h1 id="transport::MountainBike"><span><span class="keyword">Class</span><span>transport::MountainBike</span></span></h1>
+        <div class="description">
+            <div class="doc">
+                <p>MountainBike is an implementation of a <a href="transport.Bicycle.html#transport.Bicycle">transport::Bicycle</a>
+                    providing a bike for cycling on rough terrain. Mountain bikes
+                    are pretty cool because they have stuff like <strong>Suspension</strong> (and
+                    you can even adjust it using <a href="#transport.MountainBike.SetSuspension">SetSuspension</a>). If you're looking
+                    for a bike for use on the road, you might be better off using a
+                    <a href="transport.RacingBike.html#transport.RacingBike">transport::RacingBike</a> though.</p>
+            </div>
+        </div>
+        <h2 data-cldoc-dynamic="1" id="member functions">Member Functions</h2>
+        <div class="member_functions">
+            <div class="function">
+                <div class="declaration" id="transport::MountainBike::ChangeBreak">
+                    <div class="return_type"><span class="type"><span class="name builtin">bool</span></span></div>
+                    <table class="declaration">
+                        <tbody>
+                            <tr>
+                                <td class="identifier">ChangeBreak&lt;BreakType&gt;</td>
+                                <td class="open_paren">(</td>
+                                <td class="argument_type"><span class="type"><span class="name ">BreakType</span></span></td>
+                                <td class="argument_name">breakType</td>
+                                <td class="close_paren">)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="doc">
+                    <p>ChangesBreak changes the type of break fitted to the bike.
+                        The method will return false if the break type could not be
+                        fitted.</p>
+                </div>
+                <table class="function-template-parameters">
+                    <tbody>
+                        <tr>
+                            <td>BreakType</td>
+                            <td>
+                                <div class="doc"></div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table class="arguments">
+                    <tbody>
+                        <tr id="transport::MountainBike::ChangeBreak::breakType">
+                            <td>breakType</td>
+                            <td>
+                                <div class="doc">
+                                    <p>the type of the break.</p>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="return">
+                            <td class="keyword">return</td>
+                            <td>
+                                <div class="doc">
+                                    <p>true if the break was adjusted successfully.
+                                        false otherise</p>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="function">
+                <div class="declaration" id="transport::MountainBike::SetSuspension">
+                    <div class="return_type"><span class="type"><span class="name builtin">bool</span></span></div>
+                    <table class="declaration">
+                        <tbody>
+                            <tr>
+                                <td class="identifier">SetSuspension</td>
+                                <td class="open_paren">(</td>
+                                <td class="argument_type"><span class="type"><span class="name builtin">double</span></span></td>
+                                <td class="argument_name">stiffness</td>
+                                <td class="close_paren">)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="doc">
+                    <p>SetSuspension changes the stiffness of the suspension
+                        on the bike. The method will return false if the stiffness
+                        could not be adjusted.</p>
+                </div>
+                <table class="arguments">
+                    <tbody>
+                        <tr id="transport::MountainBike::SetSuspension::stiffness">
+                            <td>stiffness</td>
+                            <td>
+                                <div class="doc">
+                                    <p>the suspension stiffness.</p>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="return">
+                            <td class="keyword">return</td>
+                            <td>
+                                <div class="doc">
+                                    <p>true if the suspension was adjusted successfully,
+                                        false otherwise.</p>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
