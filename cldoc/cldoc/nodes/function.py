@@ -1,24 +1,7 @@
-# This file is part of cldoc.  cldoc is free software: you can
-# redistribute it and/or modify it under the terms of the GNU General Public
-# License as published by the Free Software Foundation, version 2.
-#
-# This program is distributed in the hope that it will be useful, but WITHOUT
-# ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
-# FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
-# details.
-#
-# You should have received a copy of the GNU General Public License along with
-# this program; if not, write to the Free Software Foundation, Inc., 51
-# Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
-from .node import Node
-from .namespace import Namespace
 from .ctype import Type
-
+from .node import Node
 from ..clang import cindex
-from ..comment import Comment
-from ..comment import Parser
 
-import re
 
 class Argument:
     def __init__(self, func, cursor):
@@ -82,6 +65,7 @@ class Argument:
     def is_unlabeled(self):
         return False
 
+
 class Function(Node):
     kind = cindex.CursorKind.FUNCTION_DECL
 
@@ -136,5 +120,3 @@ class Function(Node):
     @property
     def arguments(self):
         return list(self._arguments)
-
-# vi:ts=4:et

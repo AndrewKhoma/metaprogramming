@@ -49,7 +49,7 @@ $in_group_row_spacing: 40px;
   }
 
   tr.selected {
-      background-color: $selection_color;
+    background-color: $selection_color;
   }
 }
 
@@ -217,7 +217,7 @@ $in_group_row_spacing: 40px;
       }
     }
 
-   .subtitle {
+    .subtitle {
       font-size: 1.1em;
       text-align: center;
       margin-top: 15px;
@@ -247,7 +247,7 @@ $in_group_row_spacing: 40px;
     }
 
     * {
-        text-overflow: ellipsis;
+      text-overflow: ellipsis;
     }
 
     li {
@@ -504,9 +504,9 @@ $in_group_row_spacing: 40px;
       margin-bottom: 50px;
 
       div.declaration {
-          background-color: lighten(#729fcf, 35%);
-          border: 1px solid lighten(#729fcf, 20%);
-          padding: 5px;
+        background-color: lighten(#729fcf, 35%);
+        border: 1px solid lighten(#729fcf, 20%);
+        padding: 5px;
       }
 
       div.declaration.selected {
@@ -541,6 +541,7 @@ $in_group_row_spacing: 40px;
 
         td.argument_type {
           padding-right: 2px;
+
           span.type {
             display: block;
 

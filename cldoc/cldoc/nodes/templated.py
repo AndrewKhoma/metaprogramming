@@ -1,22 +1,8 @@
-# This file is part of cldoc.  cldoc is free software: you can
-# redistribute it and/or modify it under the terms of the GNU General Public
-# License as published by the Free Software Foundation, version 2.
-#
-# This program is distributed in the hope that it will be useful, but WITHOUT
-# ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
-# FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
-# details.
-#
-# You should have received a copy of the GNU General Public License along with
-# this program; if not, write to the Free Software Foundation, Inc., 51
-# Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 from .node import Node
 from .templatetypeparameter import TemplateTypeParameter, TemplateNonTypeParameter
 
 from ..comment import Comment
-from ..comment import Parser
 
-import re
 
 class Templated(Node):
     def __init__(self, cursor, comment):
@@ -37,7 +23,7 @@ class Templated(Node):
 
     def append(self, child):
         if isinstance(child, TemplateTypeParameter) or \
-           isinstance(child, TemplateNonTypeParameter):
+                isinstance(child, TemplateNonTypeParameter):
             self._template_types[child.name] = child
 
             if child.name in self._template_type_comments:
@@ -60,5 +46,3 @@ class Templated(Node):
                     del self._comment.params[p.name]
 
                 self._template_types[p.name].merge_comment(cm)
-
-# vi:ts=4:et

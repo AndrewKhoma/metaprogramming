@@ -1,6 +1,7 @@
 try:
-    unicode # Just to see if it exists
+    unicode  # Just to see if it exists
     basecls = unicode
+
 
     def makeutf8(s):
         if not isinstance(s, unicode):
@@ -16,6 +17,7 @@ try:
 except:
     basecls = str
 
+
     def makeutf8(s):
         if not isinstance(s, str):
             if hasattr(s, '__str__'):
@@ -26,6 +28,7 @@ except:
         return s
 
 string = basecls
+
 
 class utf8(string):
     def __new__(cls, s):
@@ -45,5 +48,3 @@ class utf8(string):
 
     def __add__(self, other):
         return utf8(super(utf8, self).__add__(makeutf8(other)))
-
-# vi:ts=4:et

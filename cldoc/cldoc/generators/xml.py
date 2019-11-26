@@ -1,27 +1,16 @@
-# This file is part of cldoc.  cldoc is free software: you can
-# redistribute it and/or modify it under the terms of the GNU General Public
-# License as published by the Free Software Foundation, version 2.
-#
-# This program is distributed in the hope that it will be useful, but WITHOUT
-# ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
-# FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
-# details.
-#
-# You should have received a copy of the GNU General Public License along with
-# this program; if not, write to the Free Software Foundation, Inc., 51
-# Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 from __future__ import absolute_import
-from ..clang import cindex
+
+import os
+import sys
+from xml.etree import ElementTree
 
 from .generator import Generator
-from .. import nodes
 from .. import example
-from .. import utf8
-
-from xml.etree import ElementTree
-import sys, os
-
 from .. import fs
+from .. import nodes
+from .. import utf8
+from ..clang import cindex
+
 
 class Xml(Generator):
     def generate(self, outdir):
@@ -525,7 +514,8 @@ class Xml(Generator):
 
     def templated_to_xml_ref(self, node, element):
         for child in node.sorted_children():
-            if not (isinstance(child, nodes.TemplateTypeParameter) or isinstance(child, nodes.TemplateNonTypeParameter)):
+            if not (isinstance(child, nodes.TemplateTypeParameter) or isinstance(child,
+                                                                                 nodes.TemplateNonTypeParameter)):
                 continue
 
             element.append(self.node_to_xml(child))
@@ -574,5 +564,3 @@ class Xml(Generator):
         elif isinstance(node, nodes.Class):
             # Go deep, but only for inner classes
             Generator.generate_node(self, node, lambda x: isinstance(x, nodes.Class))
-
-# vi:ts=4:et

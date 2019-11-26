@@ -1,29 +1,29 @@
 class cldoc.Union extends cldoc.Node
-    @title = ['Union', 'Unions']
-    @render_container_tag = 'table'
+  @title = ['Union', 'Unions']
+  @render_container_tag = 'table'
 
-    constructor: (@node) ->
-        super(@node)
+  constructor: (@node) ->
+    super(@node)
 
-    render: ->
-        ret = '<tr class="union">'
+  render: ->
+    ret = '<tr class="union">'
 
-        ret += '<td><span class="keyword">union</span></td>'
-        ret += '<td></td>'
+    ret += '<td><span class="keyword">union</span></td>'
+    ret += '<td></td>'
 
-        ret += '<td class="doc">' + cldoc.Doc.either(@node) + '</td>'
-        ret += '</tr><tr><td colspan="3"><table class="fields union">'
+    ret += '<td class="doc">' + cldoc.Doc.either(@node) + '</td>'
+    ret += '</tr><tr><td colspan="3"><table class="fields union">'
 
-        # Add also the things contained in the union
-        for child in @node.children()
-            child = $(child)
-            tp = cldoc.Page.node_type(child)
+    # Add also the things contained in the union
+    for child in @node.children()
+      child = $(child)
+      tp = cldoc.Page.node_type(child)
 
-            if tp
-                ret += new tp(child).render()
+      if tp
+        ret += new tp(child).render()
 
-        return ret + '</table></td></tr>'
+    return ret + '</table></td></tr>'
 
 cldoc.Node.types.union = cldoc.Union
 
-# vi:ts=4:et
+

@@ -1,35 +1,35 @@
 class cldoc.Category extends cldoc.Node
-    @title = ['', 'Categories']
+  @title = ['', 'Categories']
 
-    constructor: (@node) ->
-        super(@node)
+  constructor: (@node) ->
+    super(@node)
 
-    full_name_for_display: ->
-        @name
+  full_name_for_display: ->
+    @name
 
-    render: ->
-        ret = '<div class="item">'
+  render: ->
+    ret = '<div class="item">'
 
-        ret += cldoc.Page.make_link(@ref, @name, {'id': @id})
-        ret += new cldoc.Doc(@brief).render()
+    ret += cldoc.Page.make_link(@ref, @name, {'id': @id})
+    ret += new cldoc.Doc(@brief).render()
 
-        categories = @node.children('category')
+    categories = @node.children('category')
 
-        if categories.length > 0
-            ret += '<table class="category">'
+    if categories.length > 0
+      ret += '<table class="category">'
 
-            for cat in categories
-                cat = $(cat)
+      for cat in categories
+        cat = $(cat)
 
-                a = cldoc.Page.make_link(cat.attr('ref'), cat.attr('name'))
-                doc = cldoc.Doc.either(cat)
+        a = cldoc.Page.make_link(cat.attr('ref'), cat.attr('name'))
+        doc = cldoc.Doc.either(cat)
 
-                ret += '<tr><td>' + a + '</td><td class="doc">' + doc + '</td></tr>'
+        ret += '<tr><td>' + a + '</td><td class="doc">' + doc + '</td></tr>'
 
-            ret += '</table>'
+      ret += '</table>'
 
-        return ret
+    return ret
 
 cldoc.Node.types.category = cldoc.Category
 
-# vi:ts=4:et
+

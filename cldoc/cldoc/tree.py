@@ -1,37 +1,22 @@
-# This file is part of cldoc.  cldoc is free software: you can
-# redistribute it and/or modify it under the terms of the GNU General Public
-# License as published by the Free Software Foundation, version 2.
-#
-# This program is distributed in the hope that it will be useful, but WITHOUT
-# ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
-# FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
-# details.
-#
-# You should have received a copy of the GNU General Public License along with
-# this program; if not, write to the Free Software Foundation, Inc., 51
-# Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 # -*- coding: utf-8 -*-
 
-from .clang import cindex
-import tempfile
 import functools
-
-from .defdict import Defdict
+import os
+import platform
+import sys
+import tempfile
+from ctypes.util import find_library
 
 from . import comment
-from . import nodes
-from . import includepaths
 from . import documentmerger
-
 from . import example
-from . import utf8
+from . import includepaths
 from . import log
-
+from . import nodes
+from . import utf8
+from .clang import cindex
 from .cmp import cmp
-
-import os, sys, re, glob, platform
-
-from ctypes.util import find_library
+from .defdict import Defdict
 
 if platform.system() == 'Darwin':
     libclangs = [
@@ -573,5 +558,3 @@ class Tree(documentmerger.DocumentMerger):
 
                 if (not par or ret is None) and not item.kind in ignoretop:
                     log.warning("Unhandled cursor: %s", item.kind)
-
-# vi:ts=4:et

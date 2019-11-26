@@ -1,22 +1,19 @@
-# This file is part of cldoc.  cldoc is free software: you can
-# redistribute it and/or modify it under the terms of the GNU General Public
-# License as published by the Free Software Foundation, version 2.
-#
-# This program is distributed in the hope that it will be useful, but WITHOUT
-# ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
-# FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
-# details.
-#
-# You should have received a copy of the GNU General Public License along with
-# this program; if not, write to the Free Software Foundation, Inc., 51
-# Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 from __future__ import absolute_import
 
-import subprocess, threading, time, sys, argparse, os
-import SimpleHTTPServer, SocketServer
+import argparse
+import os
+import subprocess
+import sys
+import threading
+import time
+
+import SimpleHTTPServer
+import SocketServer
+
 
 class Server(SocketServer.TCPServer):
     allow_reuse_address = True
+
 
 def handler_bind(directory):
     class Handler(SimpleHTTPServer.SimpleHTTPRequestHandler):
@@ -39,6 +36,7 @@ def handler_bind(directory):
 
     return Handler
 
+
 class SocketThread(threading.Thread):
     def __init__(self, directory, host):
         threading.Thread.__init__(self)
@@ -58,6 +56,7 @@ class SocketThread(threading.Thread):
 
     def run(self):
         self.httpd.serve_forever()
+
 
 def run(args):
     parser = argparse.ArgumentParser(description='clang based documentation generator.',
@@ -92,5 +91,3 @@ def run(args):
             t.shutdown()
             t.join()
             break
-
-# vi:ts=4:et

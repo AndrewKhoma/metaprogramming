@@ -1,11 +1,11 @@
 class cldoc.Class extends cldoc.Struct
-    @title = ['Class', 'Classes']
+  @title = ['Class', 'Classes']
 
-    constructor: (@node) ->
-        super(@node)
+  constructor: (@node) ->
+    super(@node)
 
-        @keyword = 'class'
+    @keyword = 'class'
 
 cldoc.Node.types['class'] = cldoc.Class
 
-# vi:ts=4:et
+

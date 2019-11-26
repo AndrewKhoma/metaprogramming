@@ -1,33 +1,33 @@
 class cldoc.TemplateTypeParameter extends cldoc.Node
-    @title = ['Template Parameter', 'Template Parameters']
-    @render_container_tag = 'table'
+  @title = ['Template Parameter', 'Template Parameters']
+  @render_container_tag = 'table'
 
-    render: ->
-        e = cldoc.html_escape
+  render: ->
+    e = cldoc.html_escape
 
-        name = @name
-        def = @node.attr('default')
-        tp = @node.children('type')
+    name = @name
+    def = @node.attr('default')
+    tp = @node.children('type')
 
-        ret = '<tr id="' + e(@id) + '">'
+    ret = '<tr id="' + e(@id) + '">'
 
-        name = ''
+    name = ''
 
-        if tp.length > 0
-            name += (new cldoc.Type(tp)).render() + ' '
+    if tp.length > 0
+      name += (new cldoc.Type(tp)).render() + ' '
 
-        name += e(@name)
+    name += e(@name)
 
-        if def
-            name += ' = <span class="constant">' + def + '</span>'
+    if def
+      name += ' = <span class="constant">' + def + '</span>'
 
-        ret += '<td>' + name + '</td>'
-        ret += '<td>' + cldoc.Doc.brief(@node) + '</td>'
-        ret += '</tr>'
+    ret += '<td>' + name + '</td>'
+    ret += '<td>' + cldoc.Doc.brief(@node) + '</td>'
+    ret += '</tr>'
 
-        return ret
+    return ret
 
 cldoc.Node.types.templatetypeparameter = cldoc.TemplateTypeParameter
 cldoc.Node.types.templatenontypeparameter = cldoc.TemplateTypeParameter
 
-# vi:ts=4:et
+

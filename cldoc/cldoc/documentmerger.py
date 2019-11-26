@@ -1,11 +1,13 @@
-import os, subprocess
+import os
+import re
+import subprocess
+import sys
 
 from . import comment
-from . import nodes
-import sys, re
-
 from . import fs
+from . import nodes
 from . import utf8
+
 
 class DocumentMerger:
     reinclude = re.compile('#<cldoc:include[(]([^)]*)[)]>')
@@ -158,5 +160,3 @@ class DocumentMerger:
                     self.all_nodes.append(s)
 
         return root
-
-# vi:ts=4:et

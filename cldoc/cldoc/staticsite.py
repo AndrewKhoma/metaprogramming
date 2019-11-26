@@ -1,4 +1,8 @@
-import shutil, subprocess, os, sys
+import os
+import shutil
+import subprocess
+import sys
+
 
 def check_node():
     with open(os.devnull) as devnull:
@@ -17,22 +21,21 @@ def check_node():
 
         return (True, 'node')
 
+
 def generate(baseout, opts):
     # Call node to generate the static website at the actual output
     # directory
     datadir = os.path.join(os.path.dirname(__file__), 'data')
 
-    if 'CLDOC_DEV' in os.environ:
-        jsfile = os.path.join(os.path.dirname(__file__), '..', 'cldoc-static', 'lib', 'cldoc-static-run.js')
-    else:
-        jsfile = 'cldoc-static'
+    jsfile = 'cldoc-static'
 
     print('Generating static website...')
 
     ok, obj = check_node()
 
     if not ok:
-        sys.stderr.write("\nFatal: Failed to call static site generator. The static site generator uses node.js (http://nodejs.org/). Please make sure you have node installed on your system and try again.\n")
+        sys.stderr.write(
+            "\nFatal: Failed to call static site generator. The static site generator uses node.js (http://nodejs.org/). Please make sure you have node installed on your system and try again.\n")
 
         message = str(obj.message)
 
