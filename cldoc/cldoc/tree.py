@@ -64,9 +64,9 @@ except cindex.LibclangError as e:
 
 
 class Tree(documentmerger.DocumentMerger):
-    def __init__(self, files, flags):
+    def __init__(self, input_files, flags):
         self.processed = {}
-        self.files, ok = self.expand_sources([os.path.realpath(f) for f in files])
+        self.files, ok = self.expand_sources([os.path.realpath(f) for f in input_files])
 
         if not ok:
             sys.exit(1)
@@ -198,23 +198,9 @@ class Tree(documentmerger.DocumentMerger):
 
             tu = self.index.parse(f, self.flags)
 
-            if len(tu.diagnostics) != 0:
-                fatal = False
-
-                for d in tu.diagnostics:
-                    sys.stderr.write(d.format())
-                    sys.stderr.write("\n")
-
-                    if d.severity == cindex.Diagnostic.Fatal or \
-                            d.severity == cindex.Diagnostic.Error:
-                        fatal = True
-
-                if fatal:
-                    sys.stderr.write("\nCould not generate documentation due to parser errors\n")
-
             if not tu:
                 sys.stderr.write("Could not parse file %s...\n" % (f,))
-                sys.exit(1)
+                continue
 
             # Extract comments from files and included files that we are
             # supposed to inspect

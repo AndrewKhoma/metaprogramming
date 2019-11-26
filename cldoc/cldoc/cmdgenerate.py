@@ -40,7 +40,6 @@ def run(args):
             sys.exit(1)
         else:
             sep = -1
-    print(args)
 
     parser = argparse.ArgumentParser(description='clang based documentation generator.',
                                      usage='%(prog)s generate [CXXFLAGS] -- [OPTIONS] [FILES]')
