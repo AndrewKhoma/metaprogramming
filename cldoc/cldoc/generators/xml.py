@@ -118,8 +118,8 @@ class Xml(Generator):
 
         if isinstance(node, nodes.Class):
             for child in node.children:
-                if not (isinstance(child, nodes.Field) or \
-                        isinstance(child, nodes.Variable) or \
+                if not (isinstance(child, nodes.Field) or
+                        isinstance(child, nodes.Variable) or
                         isinstance(child, nodes.TemplateTypeParameter)):
                     return True
 
