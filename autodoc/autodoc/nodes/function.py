@@ -83,7 +83,7 @@ class Function(Node):
 
     @property
     def semantic_parent(self):
-        from namespace import Namespace
+        from .namespace import Namespace
 
         parent = self.parent
 

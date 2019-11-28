@@ -140,7 +140,7 @@ class Tree(documentmerger.DocumentMerger):
 
     def filter_source(self, path):
         return path.endswith('.c') or path.endswith('.cpp') or path.endswith('.h') or path.endswith(
-            '.cc') or path.endswith('.hh') or path.endswith('.hpp')
+            '.cc') or path.endswith('.hh') or path.endswith('.hpp') or os.path.isdir(path)
 
     def expand_sources(self, sources, filter=None):
         ret = []
