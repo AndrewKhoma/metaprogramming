@@ -15,7 +15,7 @@ def flags(f):
                              stderr=subprocess.PIPE)
     except OSError as e:
         sys.stderr.write(
-            "\nFatal: Failed to run clang++ to obtain system include headers, please install clang++ to use cldoc\n")
+            "\nFatal: Failed to run clang++ to obtain system include headers, please install clang++ to use autodoc\n")
 
         message = str(e)
 

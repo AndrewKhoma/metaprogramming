@@ -19,7 +19,7 @@ def print_available_commands():
 
 def run():
     if len(sys.argv) <= 1:
-        sys.stderr.write('Please use: cldoc [command] [OPTIONS] [FILES...]\n\n')
+        sys.stderr.write('Please use: autodoc [command] [OPTIONS] [FILES...]\n\n')
         print_available_commands()
         sys.exit(1)
 
@@ -31,7 +31,7 @@ def run():
     elif cmd == 'generate':
         cmdgenerate.run(rest)
     elif cmd == '--help' or cmd == '-h':
-        sys.stderr.write('Please use: cldoc [command] --help\n\n')
+        sys.stderr.write('Please use: autodoc [command] --help\n\n')
         print_available_commands()
         sys.exit(1)
     else:

@@ -10,7 +10,7 @@ from . import utf8
 
 
 class DocumentMerger:
-    reinclude = re.compile('#<cldoc:include[(]([^)]*)[)]>')
+    reinclude = re.compile('#<autodoc:include[(]([^)]*)[)]>')
 
     def merge(self, mfilter, files):
         for f in files:
@@ -33,7 +33,7 @@ class DocumentMerger:
         ordered = []
 
         for line in lines:
-            prefix = '#<cldoc:'
+            prefix = '#<autodoc:'
 
             line = line.rstrip('\n')
 
@@ -45,7 +45,7 @@ class DocumentMerger:
 
             if line.startswith(prefix) and line.endswith('>'):
                 if len(doc) > 0 and not category:
-                    sys.stderr.write('Failed to merge file `{0}\': no #<cldoc:id> specified\n'.format(filename))
+                    sys.stderr.write('Failed to merge file `{0}\': no #<autodoc:id> specified\n'.format(filename))
                     sys.exit(1)
 
                 if category:
@@ -66,7 +66,7 @@ class DocumentMerger:
 
             ret[category] = "\n".join(doc)
         elif len(doc) > 0:
-            sys.stderr.write('Failed to merge file `{0}\': no #<cldoc:id> specified\n'.format(filename))
+            sys.stderr.write('Failed to merge file `{0}\': no #<autodoc:id> specified\n'.format(filename))
             sys.exit(1)
 
         return [[c, ret[c]] for c in ordered]

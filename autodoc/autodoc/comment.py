@@ -291,7 +291,7 @@ class RangeMap(Sorted):
 
 
 class CommentsDatabase(object):
-    cldoc_instrre = re.compile('^cldoc:([a-zA-Z_-]+)(\(([^\)]*)\))?')
+    cldoc_instrre = re.compile('^autodoc:([a-zA-Z_-]+)(\(([^\)]*)\))?')
 
     def __init__(self, filename, tu):
         self.filename = filename
@@ -320,7 +320,7 @@ class CommentsDatabase(object):
         if hasattr(self, name):
             getattr(self, name)(token, args)
         else:
-            sys.stderr.write('Invalid cldoc instruction: {0}\n'.format(func))
+            sys.stderr.write('Invalid autodoc instruction: {0}\n'.format(func))
             sys.exit(1)
 
         return True
@@ -344,7 +344,7 @@ class CommentsDatabase(object):
 
     def cldoc_instruction_end_category(self, token, args):
         if len(self.categories.stack) == 0:
-            sys.stderr.write('Failed to end cldoc category: no category to end (at {0})\n'.format(
+            sys.stderr.write('Failed to end autodoc category: no category to end (at {0})\n'.format(
                 self.location_to_str(token.location)))
 
             sys.exit(1)
@@ -353,7 +353,7 @@ class CommentsDatabase(object):
 
         if len(args) == 1 and last.obj != args[0]:
             sys.stderr.write(
-                'Failed to end cldoc category: current category is `{0}\', not `{1}\' (at {2})\n'.format(last.obj,
+                'Failed to end autodoc category: current category is `{0}\', not `{1}\' (at {2})\n'.format(last.obj,
                                                                                                          args[0],
                                                                                                          self.location_to_str(
                                                                                                              token.location)))
@@ -389,7 +389,7 @@ class CommentsDatabase(object):
                 break
 
     def extract_one(self, token, s):
-        # Parse special cldoc:<instruction>() comments for instructions
+        # Parse special autodoc:<instruction>() comments for instructions
         if self.parse_cldoc_instruction(token, s.strip()):
             return
 

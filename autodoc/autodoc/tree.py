@@ -58,7 +58,7 @@ try:
     testconf.get_cindex_library()
 except cindex.LibclangError as e:
     sys.stderr.write(
-        "\nFatal: Failed to locate libclang library. cldoc depends on libclang for parsing sources, please make sure you have libclang installed.\n" + str(
+        "\nFatal: Failed to locate libclang library. autodoc depends on libclang for parsing sources, please make sure you have libclang installed.\n" + str(
             e) + "\n\n")
     sys.exit(1)
 
