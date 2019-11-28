@@ -4,31 +4,14 @@ import argparse
 import os
 import sys
 
-from . import fs, staticsite
+from . import generators
 from . import log
 
 
 def run_generate(t, opts):
-    if opts.type != 'html' and opts.type != 'xml':
-        return
-
-    from . import generators
-
     generator = generators.Xml(t, opts)
-
-    if opts.type == 'html' and opts.static:
-        baseout = fs.fs.mkdtemp()
-    else:
-        baseout = opts.output
-
-    xmlout = os.path.join(baseout, 'xml')
-    generator.generate(xmlout)
-
-    if opts.type == 'html':
-        generators.Html(t).generate(baseout, opts.static, opts.custom_js, opts.custom_css)
-
-        if opts.static:
-            staticsite.generate(baseout, opts)
+    xml_out = os.path.join(opts.output, 'xml')
+    generator.generate(xml_out)
 
 
 def run(args):

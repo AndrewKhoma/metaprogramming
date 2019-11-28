@@ -2,10 +2,7 @@ from __future__ import absolute_import
 
 import sys
 
-
-def run_generate(args):
-    from . import cmdgenerate
-    cmdgenerate.run(args)
+from . import cmdgenerate
 
 
 def print_available_commands():
@@ -27,7 +24,7 @@ def run():
 
     rest = sys.argv[2:]
 
-    run_generate(rest)
+    cmdgenerate.run(rest)
 
 
 if __name__ == '__main__':
