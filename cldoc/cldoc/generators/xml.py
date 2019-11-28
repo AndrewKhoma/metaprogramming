@@ -3,6 +3,7 @@ from __future__ import absolute_import
 import os
 import sys
 from xml.etree import ElementTree
+from lxml import etree as etree_lxml
 
 from .generator import Generator
 from .. import example
@@ -18,12 +19,9 @@ class Xml(Generator):
             outdir = 'xml'
 
         try:
-            fs.fs.makedirs(outdir)
+            os.makedirs(outdir)
         except OSError:
             pass
-
-        ElementTree.register_namespace('gobject', 'http://jessevdk.github.com/cldoc/gobject/1.0')
-        ElementTree.register_namespace('cldoc', 'http://jessevdk.github.com/cldoc/1.0')
 
         self.index = ElementTree.Element('index')
         self.written = {}
@@ -92,22 +90,29 @@ class Xml(Generator):
     def write_xml(self, elem, fname):
         self.written[fname] = True
 
-        elem.attrib['xmlns'] = 'http://jessevdk.github.com/cldoc/1.0'
-
         tree = ElementTree.ElementTree(elem)
 
         self.indent(tree.getroot())
 
-        f = fs.fs.open(os.path.join(self.outdir, fname), 'w')
+        real_filename = os.path.join(self.outdir, fname)
+
+        f = fs.fs.open(real_filename, 'w')
 
         if sys.version_info[0] == 3:
-            tree.write(f, encoding='unicode', xml_declaration=True)
+            encoding_xml = 'unicode'
         else:
-            tree.write(f, encoding='utf-8', xml_declaration=True)
+            encoding_xml = 'utf-8'
+
+        tree.write(f, encoding=encoding_xml, xml_declaration=True)
 
         f.write('\n')
-
         f.close()
+
+        lx = etree_lxml.parse(real_filename)
+        pretty_xml_as_string = etree_lxml.tostring(lx, pretty_print=True).decode("utf-8")
+
+        with open(real_filename, "w") as file:
+            file.write(pretty_xml_as_string)
 
     def is_page(self, node):
         if node.force_page:
