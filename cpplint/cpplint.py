@@ -50,8 +50,8 @@ import re
 import sre_compile
 import string
 import sys
-import unicodedata
 import sysconfig
+import unicodedata
 
 try:
     xrange  # Python 2
