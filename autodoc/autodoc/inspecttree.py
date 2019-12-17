@@ -153,15 +153,19 @@ vertical-align: top;
         for f in tree.files:
             tu = index.parse(f, tree.flags)
 
+            for d in tu.diagnostics:
+                sys.stderr.write(d.format())
+                sys.stderr.write("\n")
+
             if not tu:
-                sys.stderr.write("Could not parse file %s...\n" % (f,))
+                sys.stderr.write("Could not parse file {0}...\n".format(f))
 
             file.write("<div class='file'><div class='filename'>" + f + "</div>")
 
             inspect_tokens(tree, f, tu, file)
 
             # Recursively inspect cursors
-            inspect_cursors(tree, tu.cursor.get_children(), file)
+            # inspect_cursors(tree, tu.cursor.get_children(), file)
 
             file.write("</div>")
 
